@@ -1,0 +1,86 @@
+*, *::before, *::after { /* *, *::before itd je tako jer selektor * ne utice na pseudo elem */
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  :root {
+    --hue-neutral: 200; /*neutral, netacno, tacno boje*/
+    --hue-wrong: 0;
+    --hue-correct: 100;
+  }
+  
+  body { /* display flex, justfy content center na centru */
+    --hue: var(--hue-neutral); /*hsl boje, na w3 ima objasnjenje(saturacija, lightness)*/
+    padding: 0;
+    margin: 0;
+    display: flex;
+    width: 100vw; /*view widthe- cela sirina, isto i za duzinu*/
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: hsl(var(--hue), 100%, 40%); /*varijabla default, saturacija 100%*/
+  }
+  
+  body.correct {
+    --hue: var(--hue-correct); /*klasa correct varijabla na hue correct*/
+  }
+  
+  body.wrong {
+    --hue: var(--hue-wrong);
+  }
+  
+  .container {
+    width: 800px;
+    max-width: 80%;
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 0 10px 2px; /*blur 10, 2spread*/
+  }
+  
+  .btn-grid {
+    display: grid;
+    grid-template-columns: repeat(2, auto); /*2 kolone, jedna pored druge*/
+    gap: 10px; /*razmak izmedju kolona*/
+    margin: 20px 0;
+  }
+  
+  .btn {/*ovo je za svako dugme*/
+    --hue: var(--hue-neutral);
+    border: 1px solid hsl(var(--hue), 100%, 30%);
+    background-color: hsl(var(--hue), 100%, 50%); /*50 posto da bi bilo brigther od 40*/
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: whitesmoke;
+    outline: none;
+  }
+  
+  .btn:hover {
+    background-color: rgb(180, 180, 180); /*za hover menja boju i border obican*/
+    border-color: black;
+  }
+  
+  .btn.correct {
+    --hue: var(--hue-correct);
+    color: black;
+  }
+  
+  .btn.wrong {
+    --hue: var(--hue-wrong);
+  }
+  
+  .start-btn, .next-btn {
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 10px 20px;
+  }
+  
+  .controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .hide {
+    display: none;
+  }
